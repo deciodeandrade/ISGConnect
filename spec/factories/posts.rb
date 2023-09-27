@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :post do
-    title { "MyString" }
-    text { "MyText" }
+    title { Faker::Book.title }
+    text { Faker::Lorem.paragraph }
     user { nil }
   end
 end
