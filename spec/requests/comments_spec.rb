@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "/comments", type: :request do
   let(:user) { create(:user) }
-  let(:post) { create(:post) }
+  let(:sample_post) { create(:post) }
 
-  let(:valid_attributes) { attributes_for(:comment, post_id: post.id) }
+  let(:valid_attributes) { attributes_for(:comment, post_id: sample_post.id) }
 
   let(:invalid_attributes) {
     attributes_for(:comment, post_id: nil)
