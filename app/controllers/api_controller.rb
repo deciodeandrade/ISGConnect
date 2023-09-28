@@ -1,6 +1,6 @@
 class ApiController < ApplicationController
   include DeviseTokenAuth::Concerns::SetUserByToken
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: %i[index show]
 
   def render_error(message: nil, fields: nil, status: :unprocessable_entity)
     errors = {}
