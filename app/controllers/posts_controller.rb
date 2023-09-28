@@ -2,7 +2,7 @@ class PostsController < ApiController
   before_action :set_post, only: [:show, :update, :destroy]
 
   def index
-    @posts = Post.all
+    @posts = Post.paginate(page: params[:page], per_page: 10)
   end
 
   def show; end

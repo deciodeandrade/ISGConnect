@@ -2,7 +2,7 @@ class CommentsController < ApiController
   before_action :set_comment, only: [:show, :update, :destroy]
 
   def index
-    @comments = Comment.all
+    @comments = Comment.paginate(page: params[:page], per_page: 10)
   end
 
   def show; end
