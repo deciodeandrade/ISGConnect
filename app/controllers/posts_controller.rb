@@ -1,27 +1,22 @@
 class PostsController < ApiController
   before_action :set_post, only: [:show, :update, :destroy]
 
-  # GET /posts
   def index
     @posts = Post.all
   end
 
-  # GET /posts/1
   def show; end
 
-  # POST /posts
   def create
     @post = Post.new(post_params)
     save_post!
   end
 
-  # PATCH/PUT /posts/1
   def update
     @post.attributes = post_params
     save_post!
   end
 
-  # DELETE /posts/1
   def destroy
     @post.destroy
   rescue

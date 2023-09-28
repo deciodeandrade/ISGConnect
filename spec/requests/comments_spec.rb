@@ -39,7 +39,7 @@ RSpec.describe "/comments", type: :request do
       it "renders a JSON response with the new comment" do
         post comments_url,
              params: { comment: valid_attributes }, headers: auth_header(user), as: :json
-        expect(response).to have_http_status(:created)
+        expect(response).to have_http_status(:ok)
         expect(response.content_type).to match(a_string_including("application/json"))
       end
     end
