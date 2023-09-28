@@ -9,13 +9,6 @@ RSpec.describe "/posts", type: :request do
     attributes_for(:post, title: nil)
   }
 
- let(:valid_headers) {
-  {
-    'Authorization' => "Bearer #{user.authentication_token}",
-    'Content-Type' => 'application/json',
-  }
-}
-
   describe "GET /index" do
     it "renders a successful response" do
       Post.create! valid_attributes
@@ -68,8 +61,9 @@ RSpec.describe "/posts", type: :request do
 
   describe "PATCH /update" do
     context "with valid parameters" do
+      let(:new_title) { 'My new title' }
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        attributes_for(:post, title: new_title)
       }
 
       it "updates the requested post" do
@@ -77,7 +71,7 @@ RSpec.describe "/posts", type: :request do
         patch post_url(post),
               params: { post: new_attributes }, headers: auth_header(user), as: :json
         post.reload
-        skip("Add assertions for updated state")
+        expect(post.title).to eq new_title
       end
 
       it "renders a JSON response with the post" do
